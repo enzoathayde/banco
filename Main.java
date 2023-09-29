@@ -1,11 +1,13 @@
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class Main
 {
   public static void main(String[] args)
   {
-    int alternativa = 1, qualbanco = 1, qualdeposito = 1;
+    int alternativa = 1, qualbanco = 1, qualdeposito = 1, transferir = 1;
     Scanner ler = new Scanner(System.in);
+    Calendar dataAtual = Calendar.getInstance();
     ContaPoupanca bancaria = new ContaPoupanca();
     ContaEspecial bancaria2 = new ContaEspecial();
     bancaria.saldo = 54;  //considere saldo em centavos
@@ -20,6 +22,7 @@ public class Main
     while(qualbanco != 0)
     {
       System.out.println("Informe 1 para acessar conta poupança, 2 para acessar a conta especial e 0 para encerrar a aplicação:");
+      System.out.println("Atual data " +dataAtual.get(Calendar.YEAR) +"/"+ dataAtual.get(Calendar.MONTH) +"/"+dataAtual.get(Calendar.DAY_OF_MONTH));
       qualbanco = ler.nextInt();
       switch(qualbanco)
       {
@@ -31,6 +34,7 @@ public class Main
         System.out.println("Caso 2: Mostrar nome do títular");
         System.out.println("Caso 3: Mostrar saldo da conta ");
         System.out.println("Caso 4: Depositar dinheiro ");
+        System.out.println("Caso 5: Transferir dinheiro para conta especial");
         System.out.println("Caso 0: Encerrar o programa da conta poupança");
         System.out.println("Escolha:");
         alternativa = ler.nextInt();
@@ -51,6 +55,11 @@ public class Main
             System.out.println("Informe a quantidade a ser depositada");
             qualdeposito = ler.nextInt();
             bancaria.Depositar(qualdeposito);
+            break;
+            case 5:
+            System.out.println("Informe a quantidade a transferir:");
+            transferir = ler.nextInt();
+            bancaria.TransferirContaEspecial(bancaria2, transferir);
             break;
             case 0:
             System.out.println("Você escolheu sair da conta poupança");
@@ -73,6 +82,7 @@ public class Main
           System.out.println("Caso 2: Mostrar nome do títular");
           System.out.println("Caso 3: Mostrar saldo da conta ");
           System.out.println("Caso 4: Depositar dinheiro ");
+          System.out.println("Caso 5: Transferir dinheiro para conta especial");
           System.out.println("Caso 0: Encerrar o programa da conta especial");
           System.out.println("Escolha:");
           alternativa = ler.nextInt();
@@ -93,6 +103,12 @@ public class Main
               System.out.println("Informe a quantidade a ser depositada");
               qualdeposito = ler.nextInt();
               bancaria2.Depositar(qualdeposito);
+              break;
+              case 5:
+              System.out.println("Informe a quantidade a transferir:");
+              transferir = ler.nextInt();
+              bancaria2.TransferirContaPoupanca(bancaria, transferir);
+              break;
               case 0:
               System.out.println("Você escolheu sair da conta poupança");
               break;

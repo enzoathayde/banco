@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class ContaPoupanca {
   int numeroConta, agencia, saldo, limite;
   String nomeCliente;
@@ -23,6 +25,12 @@ public class ContaPoupanca {
   String MostrarNome()
   {
     return nomeCliente;
+  }
+
+  void TransferirContaEspecial(ContaEspecial nomeconta, int valor)
+  {
+    this.saldo -= valor;
+    nomeconta.saldo += valor;
   }
 
   int MostrarSaldo()
