@@ -1,11 +1,12 @@
 import java.util.Scanner;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Main
 {
   public static void main(String[] args)
   {
-    int alternativa = 1, qualbanco = 1, qualdeposito = 1, transferir = 1;
+    int alternativa = 1, qualbanco = 1, qualdeposito = 1, transferir = 1, ano = 2023, mes = 9, dia = 26;
     Scanner ler = new Scanner(System.in);
     Calendar dataAtual = Calendar.getInstance();
     ContaPoupanca bancaria = new ContaPoupanca();
@@ -16,13 +17,18 @@ public class Main
     bancaria2.nomeCliente = "Lucas Padua";
     bancaria.limite = 300;
     bancaria2.limite = 200;
-
-
+    Calendar rendimento = Calendar.getInstance();
+    rendimento.set(Calendar.YEAR,ano);
+    rendimento.set(Calendar.MONTH,mes);
+    rendimento.set(Calendar.MONTH,dia);
+    Date data = rendimento.getTime();
+    Date data2 = dataAtual.getTime();
 
     while(qualbanco != 0)
     {
       System.out.println("Informe 1 para acessar conta poupança, 2 para acessar a conta especial e 0 para encerrar a aplicação:");
       System.out.println("Atual data " +dataAtual.get(Calendar.YEAR) +"/"+ dataAtual.get(Calendar.MONTH) +"/"+dataAtual.get(Calendar.DAY_OF_MONTH));
+      System.out.println(data.equals(data2));
       qualbanco = ler.nextInt();
       switch(qualbanco)
       {
