@@ -1,4 +1,5 @@
 // import java.util.Calendar;
+// import java.util.Date;
 
 public class ContaPoupanca {
   int numeroConta, agencia, saldo, limite;
@@ -35,6 +36,7 @@ public class ContaPoupanca {
 
   int MostrarSaldo()
   {
-    return saldo / 100;
+    return saldo;
   }
+
 }

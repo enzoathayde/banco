@@ -7,5 +7,4 @@ public class ContaEspecial extends ContaPoupanca {
     this.saldo -= valor;
     nomeconta.saldo += valor;
   }
-
 }
