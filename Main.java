@@ -6,7 +6,7 @@ public class Main
 {
   public static void main(String[] args)
   {
-    int alternativa = 1, qualbanco = 1, qualdeposito = 1, transferir = 1, ano = 2023, mes = 10, dia = 6;
+    int alternativa = 1, qualbanco = 1, qualdeposito = 1, transferir = 1, ano = 2023, mes = 9, dia = 6;
     Scanner ler = new Scanner(System.in);
     Calendar dataAtual = Calendar.getInstance();
     ContaPoupanca bancaria = new ContaPoupanca();
@@ -20,17 +20,21 @@ public class Main
     Calendar rendimento = Calendar.getInstance();
     rendimento.set(Calendar.YEAR,ano);
     rendimento.set(Calendar.MONTH,mes);
-    rendimento.set(Calendar.MONTH,dia);
+    rendimento.set(Calendar.DAY_OF_WEEK,dia);
     Date data = rendimento.getTime();
     Date data2 = dataAtual.getTime();
+    
+    System.out.println(data);
+    System.out.println(data2);
 
     while(qualbanco != 0)
     {
       System.out.println("Informe 1 para acessar conta poupança, 2 para acessar a conta especial e 0 para encerrar a aplicação:");
       System.out.println("Atual data " +dataAtual.get(Calendar.YEAR) +"/"+ dataAtual.get(Calendar.MONTH) +"/"+dataAtual.get(Calendar.DAY_OF_MONTH));
-      if (data.equals(data2) == true)
+      if (dataAtual.get(Calendar.YEAR) == rendimento.get(Calendar.YEAR) && dataAtual.get(Calendar.MONTH) == rendimento.get(Calendar.MONTH) && dataAtual.get(Calendar.DAY_OF_WEEK) == rendimento.get(Calendar.DAY_OF_WEEK))
       {
         System.out.println("Rendimento e empréstimo disponíveis para sua conta");
+        bancaria.DarRendimento();
       } else  
             {
               System.out.println("Data não permite empréstimos e rendimentos");

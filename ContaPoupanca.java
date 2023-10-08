@@ -39,4 +39,10 @@ public class ContaPoupanca {
     return saldo;
   }
 
+  void DarRendimento()
+  { 
+    saldo += ((saldo*0.5) /100);
+    System.out.println("Rendimento incluso na sua conta.");
+  }
+
 }
